@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+# Projet 13 - ArgentBank - 2022
+<img src="https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white"/><img src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/><img src="https://img.shields.io/badge/git%20-%23F05033.svg?&style=for-the-badge&logo=git&logoColor=white"/><img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/><img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description of the study project 
+- Use an API for a bank user account with React
+- Implement a state manager in a React application
+- Interact with an API
+- Model an API
+- Authenticate to an API
 
-## Available Scripts
+It's a frontend project, it can be cloned and launched locally.
+You can also clone and use the backend, see instructions below
 
-In the project directory, you can run:
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Personally I use vs-code under linux (unbuntu)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Prerequisite 
 
-### `npm test`
+* NodeJS
+* yarn or NPM
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Dependencies:
 
-### `npm run build`
+* @reduxjs/toolkit : ^1.8.6
+* @testing-library/jest-dom : ^5.16.5
+* @testing-library/react : ^13.4.0
+* @testing-library/user-event : ^13.5.0
+* react : ^18.2.0
+* react-dom : ^18.2.0
+* react-icons : ^4.6.0
+* react-redux : ^8.0.4
+* react-router-dom : ^6.4.2
+* react-scripts : 5.0.1
+* redux : ^4.2.0
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## How to launch it locally without docker ?
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### BackEnd :
 
-### `npm run eject`
+Go to the cloned repository on your computer
+You can clone the backend here : rajouter le liens back-end ici <a href="" target="_blank">Repository BackEnd </a> 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Open a terminal in the backend folder and install the package (described in `package.json`) :
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+$ npm install
+```
+or 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+$ yarn install
+```
+Start your local server :
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+$ yarn start
+```
+The Backend is run on this adress : http://localhost:3001/
 
-## Learn More
+### FrontEnd :
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Go to the cloned this repository on your computer and open a terminal in the frontEnd folder and install the package (described in `package.json`) :
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+$ npm install
+```
+or
 
-### Code Splitting
+```
+$ yarn install
+```
+Start your local server :
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+$ npm start
+```
+or
 
-### Analyzing the Bundle Size
+```
+$ yarn start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The FrontEnd is run on this adress : http://localhost:3000/
 
-### Making a Progressive Web App
+## Licence
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<img src='https://forthebadge.com/images/badges/open-source.svg' />

@@ -1,15 +1,19 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import './navBar.css'
+
+import { Link } from 'react-router-dom'
 import Logo from '../../assets/img/argentBankLogo.png'
 
-import { FaUserCircle, FaSignOutAlt } from 'react-icons/fa'
+import Logout from './logout/Logout.js'
+import { useSelector } from 'react-redux'
+import {selectUser} from '../../store/features/userSlice.js'
 
+import { SingInBtn } from './SignIn/SingInBtn.js'
 
-/**<i className="fa fa-user-circle"></i> */
 export default function NavBar() {
-  const iconStyle = {color: "#2c3e50"}
-  //const style = { color: "white", fontSize: "1.5em" }
+
+  const user = useSelector(selectUser)
+
   return (
     <nav className="main-nav">
       <Link className="main-nav-logo" to="/">
@@ -17,14 +21,8 @@ export default function NavBar() {
         <h1 className="sr-only">Argent Bank</h1>
       </Link>
       <div className='main-link-signin'>
-        <Link className="main-nav-item" to="/signin">
-          <FaUserCircle style={iconStyle} />
-          Sign In
-        </Link>
-        <Link className="main-nav-item" to="/">
-          <FaSignOutAlt />
-          Sign Out
-        </Link>
+        <SingInBtn />
+        {user ? <Logout /> : "" }
       </div>
     </nav>
   )
