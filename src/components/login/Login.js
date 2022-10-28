@@ -8,14 +8,16 @@ import './Login.css'
 export const Login = () => {
   const navigate = useNavigate()
 
-  const [username, setUsername] = useState("")
+  const [userEmail, setUserEmail] = useState("")
   const [password, setPassword] = useState("")
 
   const dispatch = useDispatch()
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(login({
-      username: username,
+      firstname: "Tony",
+      lastname: "Jarvis",
+      email: userEmail,
       password: password,
       loggedIn: true,
 
@@ -27,12 +29,12 @@ export const Login = () => {
     <>
       <form onSubmit={(e) => handleSubmit(e)}>
         <div className="input-wrapper">
-          <label>Username</label>
+          <label>Email</label>
           <input 
-            type="text" 
+            type="email" 
             id="username" 
-            value={username} 
-            onChange={(e) => setUsername(e.target.value)} 
+            value={userEmail} 
+            onChange={(e) => setUserEmail(e.target.value)} 
           />
         </div>
         <div className="input-wrapper">

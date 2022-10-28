@@ -12,7 +12,7 @@ export  const SingInBtn = () => {
         <>
             <Link className="main-nav-item" to="/signin">
                 <i className="fa fa-user-circle"></i>
-                {user ? `${user.username}` : "Sign In"}
+                {user ? `${user.firstname}` : "Sign In"}
             </Link>
         </>
     )
