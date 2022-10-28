@@ -27,7 +27,7 @@ export const Login = () => {
     <>
       <form onSubmit={(e) => handleSubmit(e)}>
         <div className="input-wrapper">
-          <label for="username">Username</label>
+          <label>Username</label>
           <input 
             type="text" 
             id="username" 
@@ -36,7 +36,7 @@ export const Login = () => {
           />
         </div>
         <div className="input-wrapper">
-          <label for="password">Password</label>
+          <label>Password</label>
           <input 
             type="password" 
             id="password" 
@@ -49,7 +49,7 @@ export const Login = () => {
             type="checkbox" 
             id="remember-me" 
           />
-          <label for="remember-me">Remember me</label>
+          <label>Remember me</label>
         </div>
         <button type="submit" className="sign-in-button">Sign In</button>
       </form>

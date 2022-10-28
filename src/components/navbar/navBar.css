@@ -23,6 +23,9 @@
 .main-nav-item:hover {
   text-decoration: underline;
 }
+.main-nav-item .fa {
+  margin-right: 0.2rem;
+}
 
 .main-nav-logo {
   display: flex;

@@ -1,6 +1,5 @@
 import React from 'react'
 import './sigIn.css'
-import { FaUserCircle } from 'react-icons/fa'
 import { Login } from '../../components/login/Login.js'
 
 
@@ -12,7 +11,7 @@ export default function SingIn() {
   return (
     <main className="main bg-dark centerElement">
       <section className="sign-in-content">
-        <FaUserCircle />
+        <i className="fa fa-user-circle sign-in-icon"></i>
         <h1>Sign In</h1>
         <Login />
       </section>

@@ -1,6 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
-import { FaSignOutAlt } from 'react-icons/fa'
 
 import { useDispatch } from 'react-redux'
 import { logout } from "../../../store/features/userSlice.js"
@@ -8,7 +8,7 @@ import { logout } from "../../../store/features/userSlice.js"
 
 
 
-const Logout = () => {
+export const Logout = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
@@ -19,12 +19,11 @@ const Logout = () => {
     }
     return (
         <>
-            <button className="main-nav-item" onClick={(e) => handleLogout(e)}>
-                <FaSignOutAlt />
+            <Link className="main-nav-item" onClick={(e) => handleLogout(e)}>
+                <i className="fa fa-sign-out"></i>
                 Sign Out
-            </button>
+            </Link>
         </>
     )
 }
 
-export default Logout

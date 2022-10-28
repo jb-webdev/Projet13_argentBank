@@ -1,12 +1,6 @@
 .bg-dark {
     background-color: #12002b;
 }
-/* modif css*/
-.centerElement {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 /* ============ */
 .sign-in-content {
     box-sizing: border-box;

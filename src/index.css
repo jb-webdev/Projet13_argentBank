@@ -12,3 +12,11 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+
+
+/* modif css*/
+.centerElement {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

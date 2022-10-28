@@ -1,14 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './navBar.css'
 
-import { Link } from 'react-router-dom'
 import Logo from '../../assets/img/argentBankLogo.png'
+import { Logout } from './logout/Logout.js'
+import { SingInBtn } from './SignIn/SingInBtn.js'
 
-import Logout from './logout/Logout.js'
 import { useSelector } from 'react-redux'
 import {selectUser} from '../../store/features/userSlice.js'
 
-import { SingInBtn } from './SignIn/SingInBtn.js'
 
 export default function NavBar() {
 
