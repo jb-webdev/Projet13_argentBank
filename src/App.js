@@ -3,7 +3,7 @@
     ok => L'utilisateur peut se connecter au système
     ok => L'utilisateur peut se déconnecter du système
     ok => L'utilisateur ne peut voir les informations relatives à son propre profil qu'après s'être connecté avec succès
-    - L'utilisateur peut modifier le profil et conserver les données dans la base de données.
+    ok => L'utilisateur peut modifier le profil et conserver les données dans la base de données.
 
     Parmi les éléments clés à spécifier pour chaque endpoint de l’API il faudra :
 

@@ -1,30 +1,40 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
-import { useDispatch } from 'react-redux'
-import { login } from "../../store/features/userSlice.js"
 import './Login.css'
+
+import { useDispatch } from 'react-redux';
+import { userRecup } from '../../store/features/userSlice';
+
+/**
+ * MODEL BDD
+    email: String,
+    password: String,
+    firstName: String,
+    lastName: String,
+    token: String,
+ */
 
 export const Login = () => {
   const navigate = useNavigate()
-
+  const dispatch = useDispatch()
+  
   const [userEmail, setUserEmail] = useState("")
   const [password, setPassword] = useState("")
-
-  const dispatch = useDispatch()
+  const [userFirstname, setUserFirstname] = useState("Tonny")
+  const [userLastname, setUserLastname] = useState("Jarvis")
+  const [token, setToken] = useState("TOKEN123456TOKEN")
+  
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(login({
-      firstname: "Tony",
-      lastname: "Jarvis",
+    dispatch(userRecup({
+      firstName : userFirstname,
+      lastName: userLastname,
       email: userEmail,
-      password: password,
-      loggedIn: true,
-
+      token:token
     }))
     navigate('/user')
   }
-
+  
   return (
     <>
       <form onSubmit={(e) => handleSubmit(e)}>
@@ -58,12 +68,3 @@ export const Login = () => {
     </>
   )
 }
-
-
-/**
- * model bdd 
-    email: String,
-    password: String,
-    firstName: String,
-    lastName: String
- */

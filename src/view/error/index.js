@@ -5,8 +5,8 @@ export default function Error() {
   var navigate = useNavigate()
 
   setTimeout(() => {
-    navigate(`/`)
-  }, 3000)
+    navigate(`/signin`)
+  }, 2000)
 
   return (
     <main className="main bg-dark centerElement">

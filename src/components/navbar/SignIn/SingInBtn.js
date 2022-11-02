@@ -2,18 +2,23 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import { useSelector } from 'react-redux'
-import { selectUser } from '../../../store/features/userSlice.js'
 
-export  const SingInBtn = () => {
-
-    const user = useSelector(selectUser)
-
+export const SingInBtn = () => {
+    const isUserLoggedIn = useSelector((state) => state.UserState.loggedIn)
+    const firstname = useSelector((state) => state.UserState.firstName)
     return (
         <>
-            <Link className="main-nav-item" to="/signin">
-                <i className="fa fa-user-circle"></i>
-                {user ? `${user.firstname}` : "Sign In"}
-            </Link>
+            {isUserLoggedIn ?
+                <Link className="main-nav-item" to="/user">
+                    <i className="fa fa-user-circle"></i>
+                    {firstname}
+                </Link> 
+                :
+                <Link className="main-nav-item" to="/signin">
+                    <i className="fa fa-user-circle"></i>
+                    Sign In
+                </Link>
+            }
         </>
     )
 }
