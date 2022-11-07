@@ -1,12 +1,11 @@
-.editprofile__form{}
-.editprofile__wrapperinput{}
-.editprofile__input{
+.editprofile__input {
     border: none;
     margin-right: 0.3rem;
     margin-left: 0.3rem;
     padding: 8px;
 }
-.editprofile__btn{
+
+.editprofile__btn {
     width: 100px;
     padding: 4px;
     font-size: 1.1rem;
@@ -18,4 +17,10 @@
     cursor: pointer;
     margin-right: 0.3rem;
     margin-left: 0.3rem;
+}
+
+#errorMessageApi {
+    color: red;
+    font-size: 1rem;
+    margin-bottom: 0;
 }

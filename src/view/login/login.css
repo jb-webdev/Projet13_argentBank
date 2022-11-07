@@ -1,0 +1,28 @@
+.bg-dark {
+    background-color: #12002b;
+}
+
+/* ============ */
+.sign-in-content {
+    box-sizing: border-box;
+    background-color: white;
+    width: 400px;
+    padding: 2rem;
+}
+
+.sign-in-icon {
+    font-size: 5rem;
+}
+
+.selectFormBtn {
+    display: block;
+    width: 100%;
+    padding: 1px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    border-color: #00bc77;
+    background-color: #00bc77;
+    color: #fff;
+    cursor: pointer;
+}

@@ -9,10 +9,10 @@ export const SingInBtn = () => {
     return (
         <>
             {isUserLoggedIn ?
-                <Link className="main-nav-item" to="/user">
+                <Link className="main-nav-item" to="/profile">
                     <i className="fa fa-user-circle"></i>
                     {firstname}
-                </Link> 
+                </Link>
                 :
                 <Link className="main-nav-item" to="/signin">
                     <i className="fa fa-user-circle"></i>

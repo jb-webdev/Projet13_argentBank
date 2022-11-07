@@ -2,7 +2,7 @@ import React from 'react'
 import './features.css'
 
 
-export default function FeatureItem({icon, alt, title, text}) {
+export default function FeatureItem({ icon, alt, title, text }) {
     return (
         <div className="feature-item">
             <img src={icon} alt={alt} className="feature-icon" />

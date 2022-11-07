@@ -1,7 +1,7 @@
 import React from 'react'
 import './account.css'
 
-export default function Account({title, amount, description}) {
+export default function Account({ title, amount, description }) {
     return (
         <section className="account">
             <div className="account-content-wrapper">

@@ -1,14 +1,19 @@
 import React from 'react'
 import './user.css'
-import Account from '../../components/account/index.js'
-import EditProfile from '../../components/profile/EditProfile.js'
-import Error from '../error/index.js'
 
+import fetchApi from '../../services/fetchApi.js'
+import { BASE_URL } from '../../services/fetchApi.js';
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux"
-import { UserEditProfile } from '../../store/features/userSlice.js'
+import { UserEditProfile, UserRecup } from '../../store/features/userSlice.js'
 
-export default function User() {
+import Account from '../../components/account/index.js'
+import EditProfile from '../../components/profile/EditProfile.js'
+import Error from '../error/Error.js'
+
+export default function Profile() {
+
+  const TOKEN = useSelector((state) => state.UserState.token)
 
   const isUserLoggedIn = useSelector((state) => state.UserState.loggedIn)
   const firstname = useSelector((state) => state.UserState.firstName)
@@ -16,6 +21,26 @@ export default function User() {
   const editProfile = useSelector((state) => state.UserState.editProfile)
 
   const dispatch = useDispatch()
+
+  const postApi = async () => {
+    const response = await fetchApi({
+      url: `${BASE_URL}/user/profile/`,
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer' + TOKEN
+      },
+    })
+    if (response.status === 200) {
+      dispatch(UserRecup({
+        id: response.body.id,
+        firstName: response.body.firstName,
+        lastName: response.body.lastName,
+        email: response.body.email,
+      }))
+    }
+  }
+  postApi()
+
 
   return (
     <>
