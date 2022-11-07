@@ -11,6 +11,8 @@ export const userSlice = createSlice({
         lastName: "",
         email: "",
         editProfile: false,
+        titleSignin: false,
+        modalLogin: false,
     },
 
     reducers: {
@@ -31,12 +33,17 @@ export const userSlice = createSlice({
             state.firstName = action.payload.firstName
             state.lastName = action.payload.lastName
         },
-
         UserChangeProfile: (state, action) => {
             state.lastName = action.payload.lastName
         },
         UserEditProfile: (state, action) => {
             state.editProfile = !state.editProfile
+        },
+        DisplayTitleSignin: (state, action) => {
+            state.titleSignin = !state.titleSignin
+        },
+        DisplayModalLogin: (state, action) => {
+            state.modalLogin = !state.modalLogin
         },
     }
 })
@@ -47,6 +54,8 @@ export const { UserRecup } = userSlice.actions
 export const { UserUpdateProfile } = userSlice.actions
 export const { UserChangeProfile } = userSlice.actions
 export const { UserEditProfile } = userSlice.actions
+export const { DisplayTitleSignin } = userSlice.actions
+export const { DisplayModalLogin } = userSlice.actions
 
 
 export default userSlice.reducer

@@ -1,27 +1,47 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import './LoginForm.css'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { UserSignIn } from '../../store/features/userSlice'
+import { useSelector } from "react-redux"
 
-import { useDispatch } from 'react-redux';
-import { UserSignIn } from '../../store/features/userSlice';
+// for validate form
+import { useForm } from "react-hook-form"
+import { yupResolver } from "@hookform/resolvers/yup"
+import * as Yup from "yup"
+// =================
 
-import { BASE_URL } from '../../services/fetchApi.js';
+import { BASE_URL } from '../../services/fetchApi.js'
 import fetchApi from '../../services/fetchApi.js'
 
 export const SignIn = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const displayTitle = useSelector((state) => state.UserState.titleSignin)
+  // for validate form
+  const validationSchema = Yup.object().shape({
+    email: Yup.string()
+      .email("email invalide")
+      .required("l'email est obligatoire"),
+    password: Yup.string()
+      .required("Mot de passe est obligatoire")
+      .matches(/([0-9])/, "Au moins un entier")
+      .min(8, "Mot de passe doit être plus grand que 8 caractères")
+      .max(50, "Mot de passe doit être plus petit que 50 caractères"),
+  })
+  const { register, handleSubmit, formState, reset } = useForm({resolver: yupResolver(validationSchema),})
 
-  const [userEmail, setUserEmail] = useState("")
-  const [userPassword, setUserPassword] = useState("")
+  const { errors } = formState
+
   const [errorMessageApi, setErrorMessageApi] = useState("")
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
+ 
+  const onSubmit = data => {
+    //console.log(data.email)
+    //console.log(data.password)
     const postApi = async () => {
       const bodyPost = {
-        email: userEmail,
-        password: userPassword
+        email: data.email,
+        password: data.password
       }
       const response = await fetchApi({
         url: `${BASE_URL}/user/login/`,
@@ -44,28 +64,31 @@ export const SignIn = () => {
       }
     }
     postApi()
+
+    reset()
   }
+  
   return (
     <>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      {displayTitle ? <h2>You can use your credentials to log in</h2> : ''}
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="input-wrapper">
-          <label>Email</label>
+          <label htmlFor="email">Email</label>
           <input
+            {...register("email")}
             type="email"
             id="email"
-            value={userEmail}
-            onChange={(e) => setUserEmail(e.target.value)}
           />
-          <p id="erreurEmail"></p>
+          <p className="errorInputMessage">{errors.email?.message}</p>
         </div>
         <div className="input-wrapper">
-          <label>Password</label>
+          <label htmlFor="password">Password</label>
           <input
+            {...register("password")}
             type="password"
             id="password"
-            value={userPassword}
-            onChange={(e) => setUserPassword(e.target.value)}
           />
+          <p className="errorInputMessage">{errors.password?.message}</p>
         </div>
         <div className="input-remember">
           <input

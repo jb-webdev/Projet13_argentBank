@@ -38,7 +38,13 @@
 #erreurEmail,
 #erreurFirstname,
 #erreurLastname,
-#erreurApi {
+#erreurApi,
+#erreurPassword {
+    color: red;
+    font-size: 0.5rem;
+    margin-bottom: 0;
+}
+.errorInputMessage{
     color: red;
     font-size: 0.5rem;
     margin-bottom: 0;

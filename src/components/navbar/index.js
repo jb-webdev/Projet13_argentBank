@@ -10,7 +10,7 @@ import { Logout } from './logout/Logout.js'
 import { useSelector } from "react-redux"
 
 export default function NavBar() {
-  const isUserLoggedIn = useSelector((state) => state.UserState.loggedIn);
+  const isUserLoggedIn = useSelector((state) => state.UserState.loggedIn)
 
   return (
     <nav className="main-nav">
