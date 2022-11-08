@@ -47,7 +47,7 @@ Personally I use vs-code under linux (unbuntu)
 Go to the cloned repository on your computer
 You can clone the backend here :  <a href="https://github.com/jb-webdev/Projet-13_Backend" target="_blank">Repository BackEnd </a> 
 
-Please read readme.me recommendations before launching the frontend.
+Please read the recommendations of the README.md file present in the backend folder before launching the frontend.
 
 Normally the Backend is executed on this address : http://localhost:3001/
 
