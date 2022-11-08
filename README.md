@@ -45,7 +45,7 @@ Personally I use vs-code under linux (unbuntu)
 ### BackEnd :
 
 Go to the cloned repository on your computer
-You can clone the backend here :  <a href="https://github.com/jb-webdev/Projet-13_Backend" target="_blank">Repository BackEnd </a> 
+You can clone the backend here :  <a href="https://github.com/jb-webdev/Project-10-Bank-API" target="_blank">Repository BackEnd </a> 
 
 Please read the recommendations of the README.md file present in the backend folder before launching the frontend.
 
