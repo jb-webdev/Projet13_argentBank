@@ -32,6 +32,7 @@ export const userSlice = createSlice({
         UserUpdateProfile: (state, action) => {
             state.firstName = action.payload.firstName
             state.lastName = action.payload.lastName
+            state.editProfile = !state.editProfile
         },
         UserChangeProfile: (state, action) => {
             state.lastName = action.payload.lastName
