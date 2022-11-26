@@ -11,7 +11,6 @@ export default function LogIn() {
   const dispatch = useDispatch()
   const modalIsOpen = useSelector((state) => state.UserState.modalLogin)
   
-
   if (modalIsOpen) {
     return (
       <main className="main bg-dark centerElement">

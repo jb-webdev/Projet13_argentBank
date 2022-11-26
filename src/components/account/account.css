@@ -60,3 +60,13 @@
         width: 200px;
     }
 }
+
+@media screen and (max-width: 434px) {
+    .account-title {
+        font-size: 0.8rem;
+    }
+
+    .account-amount {
+        font-size: 1.5rem;
+    }
+}

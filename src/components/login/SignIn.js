@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './LoginForm.css'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { UserSignIn } from '../../store/features/userSlice'
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+
+import { loginUser } from '../../services/requestApi'
 
 // for validate form
 import { useForm } from "react-hook-form"
@@ -11,13 +11,11 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import * as Yup from "yup"
 // =================
 
-import { BASE_URL } from '../../services/fetchApi.js'
-import fetchApi from '../../services/fetchApi.js'
 
 export const SignIn = () => {
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
   const displayTitle = useSelector((state) => state.UserState.titleSignin)
+  const messageErrorApi = useSelector((state) => state.UserState.messageErrorApi)
+  const navigate = useNavigate()
   // for validate form
   const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -29,49 +27,21 @@ export const SignIn = () => {
       .min(8, "Mot de passe doit être plus grand que 8 caractères")
       .max(50, "Mot de passe doit être plus petit que 50 caractères"),
   })
-  const { register, handleSubmit, formState, reset } = useForm({resolver: yupResolver(validationSchema),})
+  const { register, handleSubmit, formState } = useForm({ resolver: yupResolver(validationSchema), })
 
   const { errors } = formState
 
-  const [errorMessageApi, setErrorMessageApi] = useState("")
- 
-  const onSubmit = data => {
-    //console.log(data.email)
-    //console.log(data.password)
-    const postApi = async () => {
-      const bodyPost = {
-        email: data.email,
-        password: data.password
-      }
-      const response = await fetchApi({
-        url: `${BASE_URL}/user/login/`,
-        method: 'POST',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(bodyPost),
-        errMsg: 'Fail to login ! Please Retry.'
-      });
-      try {
-        if (response.status === 200) {
-          if (response?.body?.token) {
-            dispatch(UserSignIn({ token: response?.body?.token }))
-          }
-          navigate("/profile")
-        } else {
-          setErrorMessageApi("Password not correct !")
-        }
-      } catch (error) {
-        setErrorMessageApi("Oups service connection failed! ! Please Retry.")
-      }
-    }
-    postApi()
+  const dispatch = useDispatch()
 
-    reset()
+  const onSubmit = data => {
+    loginUser(data, dispatch, navigate)
   }
-  
+
   return (
     <>
       {displayTitle ? <h2>You can use your credentials to log in</h2> : ''}
       <form onSubmit={handleSubmit(onSubmit)}>
+        {messageErrorApi && <p className="errorINputMessageApi">{messageErrorApi}</p>}
         <div className="input-wrapper">
           <label htmlFor="email">Email</label>
           <input
@@ -98,7 +68,6 @@ export const SignIn = () => {
           <label>Remember me</label>
         </div>
         <button type="submit" className="sign-in-button">Sign In</button>
-        {errorMessageApi ? <p id="erreurApi">{errorMessageApi}</p> : ''}
       </form>
     </>
   )

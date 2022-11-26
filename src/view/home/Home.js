@@ -1,6 +1,7 @@
 import React from 'react'
 import './home.css'
 
+
 import Hero from '../../components/hero/index.js'
 import FeatureItem from '../../components/featureItem/index.js'
 import IconChat from "../../assets/img/icon-chat.png"
@@ -8,6 +9,10 @@ import IconMoney from "../../assets/img/icon-money.png"
 import IconSecurity from "../../assets/img/icon-security.png"
 
 export default function Home() {
+
+  
+
+
   return (
     <main>
       <Hero />

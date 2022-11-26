@@ -1,11 +1,10 @@
 import React from 'react'
 import './user.css'
 
-import fetchApi from '../../services/fetchApi.js'
-import { BASE_URL } from '../../services/fetchApi.js';
-import { useDispatch } from "react-redux";
+import { userProfil } from '../../services/requestApi'
+import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
-import { UserEditProfile, UserRecup } from '../../store/features/userSlice.js'
+import { UserEditProfile} from '../../store/features/userSlice.js'
 
 import Account from '../../components/account/index.js'
 import EditProfile from '../../components/profile/EditProfile.js'
@@ -14,37 +13,21 @@ import Error from '../error/Error.js'
 export default function Profile() {
 
   const TOKEN = useSelector((state) => state.UserState.token)
-
+  const errorApi = useSelector((state) => state.UserState.errorApi)
   const isUserLoggedIn = useSelector((state) => state.UserState.loggedIn)
   const firstname = useSelector((state) => state.UserState.firstName)
   const lastname = useSelector((state) => state.UserState.lastName)
   const editProfile = useSelector((state) => state.UserState.editProfile)
 
   const dispatch = useDispatch()
-
-  const postApi = async () => {
-    const response = await fetchApi({
-      url: `${BASE_URL}/user/profile/`,
-      method: 'POST',
-      headers: {
-        'Authorization': 'Bearer' + TOKEN
-      },
-    })
-    if (response.status === 200) {
-      dispatch(UserRecup({
-        id: response.body.id,
-        firstName: response.body.firstName,
-        lastName: response.body.lastName,
-        email: response.body.email,
-      }))
-    }
-  }
-  postApi()
+  
+  userProfil(dispatch,TOKEN)
+  
 
 
   return (
     <>
-      {isUserLoggedIn ?
+      {!errorApi  || isUserLoggedIn ?
         <main className="main bg-dark">
           <div className="header">
             <h1>Welcome back<br />{firstname} {lastname}</h1>
@@ -62,7 +45,7 @@ export default function Profile() {
           <Account title="Argent Bank Savings (x6712)" amount="$10,928.42" description="Available Balance" />
           <Account title="Argent Bank Credit Card (x8349)" amount="$184.30" description="Current Balance" />
         </main> :
-        <Error />
+        <Error messageError = "Oups, veuillez connecter l'API, service indisponible !"/>
       }
     </>
   )

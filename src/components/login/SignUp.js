@@ -1,7 +1,5 @@
 import React from 'react'
 import './LoginForm.css'
-import { BASE_URL } from '../../services/fetchApi.js'
-import fetchApi from '../../services/fetchApi.js'
 // for validate form
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
@@ -10,8 +8,7 @@ import * as Yup from "yup"
 
 
 import { useDispatch } from 'react-redux'
-import { DisplayTitleSignin, DisplayModalLogin } from '../../store/features/userSlice'
-
+import {singUpUser} from '../../services/requestApi.js'
 
 export const SignUp = () => {
   const validationSchema = Yup.object().shape({
@@ -41,7 +38,7 @@ export const SignUp = () => {
       "Accepter les conditions est obligatoire"
     ),
   })
-
+  
   const { register, handleSubmit, formState, reset } = useForm({resolver: yupResolver(validationSchema),})
   
   const { errors } = formState
@@ -49,28 +46,7 @@ export const SignUp = () => {
   const dispatch = useDispatch()
         
   const onSubmit = data => {
-    const postApi = async () => {
-      const bodyPost = {
-        email: data.email,
-        password: data.password,
-        firstName: data.firstname,
-        lastName: data.lastname
-      }
-      const response = await fetchApi({
-        url: `${BASE_URL}/user/signup/`,
-        method: 'POST',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(bodyPost)
-      })
-
-      if (response?.status === 200) {
-        dispatch(DisplayTitleSignin())
-        dispatch(DisplayModalLogin())
-      } else {
-        console.log(response.status)
-      }
-    }
-    postApi()
+    singUpUser(data, dispatch)
     reset()
   }
 
